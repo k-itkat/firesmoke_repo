@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import ScalarFormatter, FormatStrFormatter
 import matplotlib as mpl
 from datetime import datetime, timedelta
-from palettable.cartocolors.qualitative import Safe_6_r
+from palettable.cartocolors.qualitative import Safe_6
 from matplotlib.colors import ListedColormap
 
 new_data_day = (datetime.now() - timedelta(1)).strftime('%Y-%m-%d')
@@ -15,12 +15,13 @@ df_provinces = combined_totals.loc[combined_totals.index != 'Canada']
 df_national = combined_totals.loc['Canada'].to_frame().transpose()
 
 fig, ax = plt.subplots(1,1,figsize=(10,4))
-df_provinces.plot(kind='bar',ax=ax,cmap=Safe_6_r.mpl_colormap)
+df_provinces.plot(kind='bar',ax=ax,cmap=Safe_6.mpl_colormap,zorder=2)
+ax.grid(True)
 ax.set_title('Year-To-Date Smoke Cover by Province',fontsize=18)
+
 ax.set_ylabel('Smoke (km²)',fontsize=14)
 ax.set_xlabel('Province',fontsize=14)
 plt.text(.06, .98, f'Current as of {new_data_day}' '\n' 'Data Courtesy of ECCC/NOAA OSPO', ha='left', va='top', transform=ax.transAxes)
-#plt.legend(bbox_to_anchor=(1, 0.8), loc="upper left",fontsize=14)
 plt.legend(loc='lower center',fontsize=14,bbox_to_anchor=(0.5,-0.05),ncol=6)
 
 box = ax.get_position()
