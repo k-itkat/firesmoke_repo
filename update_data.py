@@ -8,7 +8,6 @@ lt = link[0:48]+'year='+new_data_day[0:4]+'&month='+new_data_day[6]+'&day='+new_
 
 combined_totals = pd.read_csv('./ytd_totals.csv')
 combined_totals = combined_totals.set_index('Agency')
-#print(combined_totals)
 data = pd.read_html(lt)[0]
 data = data.set_index('Agency')['Smoke (km2)']
 

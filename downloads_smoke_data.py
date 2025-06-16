@@ -9,6 +9,8 @@ link = 'https://cwfis.cfs.nrcan.gc.ca/maps/fm3?type=rpt&'
 dr = pd.date_range(start='1/1/2020', end=new_data_day)
 yearly_totals = {}
 
+print(new_data_day)
+
 cutoff_month = int(str(new_data_day)[5:7])
 cutoff_day = int(str(new_data_day)[8:10])
 
